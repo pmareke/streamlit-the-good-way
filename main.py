@@ -33,13 +33,15 @@ if st.session_state.get("random_country"):
     flag = st.session_state.selected_countries[st.session_state.random_country]
     st.image(flag)
 
+
 for idx, (name, is_ok) in enumerate(st.session_state.countries.items()):
-    button = st.button(name, key=f"button_{name}")
+    key = f"button_{name}"
+    button = st.button(name, key=key)
     if button:
         if is_ok:
             st.success("Correct!")
         else:
-            st.error("Incorrect, try again!")
+            st.error("Incorrect!")
 
 st.divider()
 
