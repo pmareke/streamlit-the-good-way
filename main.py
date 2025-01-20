@@ -2,9 +2,14 @@ import numpy as np
 import requests
 import streamlit as st
 
-st.header("Fun with Flags")
+st.header("Fun with flags and capitals!")
 
-tab_1, tab_2 = st.tabs(["Guess the Flag", "Guess the Capital"])
+tab_1, tab_2 = st.tabs(
+    [
+        "Guess the country by the flag",
+        "Guess the country by the capital",
+    ]
+)
 
 with tab_1:
     st.subheader("Which country does this flag belong to?")
@@ -25,7 +30,7 @@ with tab_1:
         random_country = np.random.choice(list(selected_capitals.keys()))
         st.session_state.random_country = random_country
         countries = {}
-        for idx, (name, flag) in enumerate(selected_capitals.items()):
+        for idx, name in enumerate(selected_capitals.keys()):
             if name == random_country:
                 countries[name] = True
             else:
@@ -51,7 +56,6 @@ with tab_1:
     if restart:
         st.session_state.pop("selected_countries")
         st.session_state.pop("random_country")
-        st.session_state.pop("countries")
         st.rerun()
 
 with tab_2:
@@ -75,7 +79,7 @@ with tab_2:
         random_capital = np.random.choice(list(selected_capitals.keys()))
         st.session_state.random_capital = random_capital
         capitals_countries = {}
-        for idx, (name, flag) in enumerate(selected_capitals.items()):
+        for idx, name in enumerate(selected_capitals.keys()):
             if name == random_capital:
                 capitals_countries[name] = True
             else:
@@ -99,7 +103,6 @@ with tab_2:
 
     restart = st.button("Play again!", key="capital_play_again")
     if restart:
-        st.session_state.pop("selected_countries")
-        st.session_state.pop("random_country")
-        st.session_state.pop("countries")
+        st.session_state.pop("selected_capitals")
+        st.session_state.pop("random_capital")
         st.rerun()
