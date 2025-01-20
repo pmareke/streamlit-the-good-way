@@ -1,5 +1,7 @@
 # TASKS:
 
+- `App` page.
+    - `Component` interface.
 - `Header` component.
 - `Tab` component.
 - `Flag` page.

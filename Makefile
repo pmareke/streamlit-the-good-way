@@ -48,4 +48,4 @@ watch: ## Run all the tests in watch mode
 	 PYTHONPATH=. poetry run ptw --runner "pytest -n auto tests -ra"
 
 .PHONY: pre-commit
-pre-commit: check-format check-typing # test
+pre-commit: check-format check-typing test
