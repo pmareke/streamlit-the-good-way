@@ -11,14 +11,15 @@ class Button(Component):
         key: str,
         label: str,
         callback: Callable,
-        is_ok: bool | None = None,
     ) -> None:
         self.key = key
         self.label = label
         self.callback = callback
-        self.is_ok = is_ok
 
-    def render(self) -> None:
+    def render(self, is_ok: bool | None = None) -> None:
         _button = st.button(self.label, self.key)
         if _button:
-            self.callback(self.is_ok)
+            if is_ok is None:
+                self.callback()
+            else:
+                self.callback(is_ok)

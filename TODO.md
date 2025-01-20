@@ -10,7 +10,7 @@
 - `Image` component.
 - `Button` component.
 - `Divider` component.
+- `HttpCountriesClient` client.
 - `FindCountriesByFlag` use case.
 - `FindCountriesByCapital` use case.
-- `HttpCountriesClient` client.
 
