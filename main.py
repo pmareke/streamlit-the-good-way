@@ -1,32 +1,51 @@
+import numpy as np
+import requests
 import streamlit as st
 
-st.title("Fun with Flags")
+st.header("Fun with Flags")
 
-button = st.button("Play again!")
+st.subheader("Which country does this flag belong to?")
 
-if button:
-    st.rerun()
+if not st.session_state.get("selected_countries"):
+    response = requests.get("https://restcountries.com/v3.1/all?fields=name,flags")
+    json_response = response.json()
+    length = len(json_response)
+    random_idx = np.random.randint(0, length, 3)
+    selected_countries = {}
+    for idx in random_idx:
+        country = json_response[idx]
+        name = country["name"]["common"]
+        flag = country["flags"]["svg"]
+        selected_countries[name] = flag
+    st.session_state.selected_countries = selected_countries
 
-st.write("Which country does this flag belong to?")
+    random_country = np.random.choice(list(selected_countries.keys()))
+    st.session_state.random_country = random_country
+    countries = {}
+    for idx, (name, flag) in enumerate(selected_countries.items()):
+        if name == random_country:
+            countries[name] = True
+        else:
+            countries[name] = False
+    st.session_state.countries = countries
 
+if st.session_state.get("random_country"):
+    flag = st.session_state.selected_countries[st.session_state.random_country]
+    st.image(flag)
 
-def _get_random_flag() -> tuple[str, dict]:
-    countries = {
-        "Spain": True,
-        "France": False,
-        "Germany": False,
-    }
-    return ("https://flagcdn.com/es.svg", countries)
-
-
-flag, countries = _get_random_flag()
-
-st.image(flag)
-
-for idx, (name, is_ok) in enumerate(countries.items()):
+for idx, (name, is_ok) in enumerate(st.session_state.countries.items()):
     button = st.button(name, key=f"button_{name}")
     if button:
         if is_ok:
-            st.write("Correct!")
+            st.success("Correct!")
         else:
-            st.write("Incorrect, try again!")
+            st.error("Incorrect, try again!")
+
+st.divider()
+
+restart = st.button("Play again!")
+if restart:
+    st.session_state.pop("selected_countries")
+    st.session_state.pop("random_country")
+    st.session_state.pop("countries")
+    st.rerun()
