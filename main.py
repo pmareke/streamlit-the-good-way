@@ -6,12 +6,9 @@ from src.use_cases.find_countries_by_capital_query import (
 from src.use_cases.find_countries_by_flag_query import FindCountriesByFlagQueryHandler
 
 countries_client = HttpCountriesRestClientFactory.make()
-find_countries_by_flag_query = FindCountriesByFlagQueryHandler(countries_client)
-find_countries_by_capital_query = FindCountriesByCapitalQueryHandler(countries_client)
+flag_handler = FindCountriesByFlagQueryHandler(countries_client)
+capital_handler = FindCountriesByCapitalQueryHandler(countries_client)
 
-app = App(
-    find_countries_by_flag_query,
-    find_countries_by_capital_query,
-)
+app = App(flag_handler, capital_handler)
 
 app.render()
