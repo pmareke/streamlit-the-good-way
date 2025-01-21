@@ -42,3 +42,9 @@ class HttpCountriesRestClient:
         for idx, name in enumerate(selected_countries.keys()):
             booleans[name] = True if name == capital else False
         return selected_countries[capital], booleans
+
+
+class HttpCountriesRestClientFactory:
+    @staticmethod
+    def make() -> HttpCountriesRestClient:
+        return HttpCountriesRestClient()
