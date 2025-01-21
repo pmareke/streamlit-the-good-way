@@ -3,8 +3,8 @@
 - `Component` interface.
 - `App` page.
 - `Header` component.
-- `Flag` tab.
-- `Capital` tab.
+- `FlagTab` tab.
+- `CapitalTab` tab.
 - `Tabs` component.
 - `SubHeader` component.
 - `Image` component.
@@ -12,5 +12,9 @@
 - `PlayAgainButton` component.
 - `Divider` component.
 
+--------------------------------------
+
+- `FindCountriesByFlagQueryHandler`.
+- `FindCountriesByCapitalQueryHandler`.
 - `HttpCountriesClient` client.
 
