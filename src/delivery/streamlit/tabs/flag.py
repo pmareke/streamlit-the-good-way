@@ -6,21 +6,21 @@ from src.delivery.streamlit.components.play_again_button import PlayAgainButton
 from src.delivery.streamlit.components.solve_button import SolveButton
 from src.delivery.streamlit.components.sub_header import SubHeader
 from src.domain.component import Component
-from src.infrastructure.http_countries_rest_client import HttpCountriesRestClient
+from src.use_cases.find_countries_by_flag_query import FindCountriesByFlagQueryHandler
 
 
 class FlagTab(Component):
-    def __init__(self, countries_client: HttpCountriesRestClient) -> None:
-        self.countries_client = countries_client
+    def __init__(self, handler: FindCountriesByFlagQueryHandler) -> None:
+        self.handler = handler
 
     def render(self) -> None:
         sub_header = SubHeader("Which country does this flag belong to?")
         sub_header.render()
 
         if not st.session_state.get("flag_countries"):
-            flag, booleans = self.countries_client.find_countries_by_flag()
-            st.session_state.flag = flag
-            st.session_state.flag_countries = booleans
+            response = self.handler.execute()
+            st.session_state.flag = response.flag
+            st.session_state.flag_countries = response.booleans
 
         if st.session_state.get("flag"):
             flag = st.session_state.flag

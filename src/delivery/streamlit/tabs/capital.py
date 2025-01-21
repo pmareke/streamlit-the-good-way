@@ -6,21 +6,23 @@ from src.delivery.streamlit.components.solve_button import SolveButton
 from src.delivery.streamlit.components.sub_header import SubHeader
 from src.delivery.streamlit.components.title import Title
 from src.domain.component import Component
-from src.infrastructure.http_countries_rest_client import HttpCountriesRestClient
+from src.use_cases.find_countries_by_capital_query import (
+    FindCountriesByCapitalQueryHandler,
+)
 
 
 class CapitalTab(Component):
-    def __init__(self, countries_client: HttpCountriesRestClient) -> None:
-        self.countries_client = countries_client
+    def __init__(self, handler: FindCountriesByCapitalQueryHandler) -> None:
+        self.handler = handler
 
     def render(self) -> None:
         subheader = SubHeader("Which country does this capital belong to?")
         subheader.render()
 
         if not st.session_state.get("capital_countries"):
-            capital, booleans = self.countries_client.find_countries_by_capital()
-            st.session_state.capital = capital
-            st.session_state.capital_countries = booleans
+            response = self.handler.execute()
+            st.session_state.capital = response.capital
+            st.session_state.capital_countries = response.booleans
 
         if st.session_state.get("capital"):
             capital = st.session_state.capital
