@@ -1,16 +1,20 @@
 # TASKS:
 
+- `Component` interface.
 - `App` page.
-    - `Component` interface.
 - `Header` component.
-- `Tab` component.
-- `Flag` page.
-    - `SubHeader` component.
-    - `Image` component.
-    - `Button` component.
-    - `Divider` component.
-- `Capital` page.
-- `FindCountriesByFlag` use case.
-- `FindCountriesByCapital` use case.
+- `FlagTab` tab.
+- `CapitalTab` tab.
+- `Tabs` component.
+- `SubHeader` component.
+- `Image` component.
+- `SolveButton` component.
+- `PlayAgainButton` component.
+- `Divider` component.
+
+--------------------------------------
+
+- `FindCountriesByFlagQueryHandler`.
+- `FindCountriesByCapitalQueryHandler`.
 - `HttpCountriesClient` client.
 
