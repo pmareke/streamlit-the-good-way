@@ -4,18 +4,15 @@ from src.domain.component import Component
 
 
 class SolveButton(Component):
-    def __init__(
-        self,
-        key: str,
-        label: str,
-    ) -> None:
+    def __init__(self, key: str, label: str, is_ok: bool) -> None:
         self.key = key
         self.label = label
+        self.is_ok = is_ok
 
-    def render(self, is_ok: bool) -> None:
+    def render(self) -> None:
         _button = st.button(self.label, self.key)
         if _button:
-            self._callback(is_ok)
+            self._callback(self.is_ok)
 
     def _callback(self, is_ok: bool) -> None:
         if is_ok:

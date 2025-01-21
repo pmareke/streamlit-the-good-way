@@ -38,5 +38,5 @@ class CapitalTab(Component):
     def _render_game_buttons(self) -> None:
         for name, is_ok in st.session_state.capital_countries.items():
             key = f"capital_button_{name}"
-            button = SolveButton(key, name)
-            button.render(is_ok)
+            button = SolveButton(key, name, is_ok)
+            button.render()
