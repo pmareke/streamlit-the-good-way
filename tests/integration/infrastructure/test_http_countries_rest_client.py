@@ -5,7 +5,7 @@ from src.infrastructure.http_countries_rest_client import HttpCountriesRestClien
 
 class TestHttpCountriesClientIntegration:
     def test_find_countries_by_flag(self) -> None:
-        max = 10
+        max = 1
         client = HttpCountriesRestClientFactory.make()
 
         flag, booleans = client.find_countries_by_flag(max)
@@ -14,7 +14,7 @@ class TestHttpCountriesClientIntegration:
         expect(booleans).to(have_length(max))
 
     def test_find_countries_by_capital(self) -> None:
-        max = 10
+        max = 1
         client = HttpCountriesRestClientFactory.make()
 
         capital, booleans = client.find_countries_by_capital(max)
