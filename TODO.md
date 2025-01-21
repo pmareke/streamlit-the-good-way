@@ -8,9 +8,9 @@
 - `Tabs` component.
 - `SubHeader` component.
 - `Image` component.
-- `Button` component.
+- `SolveButton` component.
+- `PlayAgainButton` component.
 - `Divider` component.
+
 - `HttpCountriesClient` client.
-- `FindCountriesByFlag` use case.
-- `FindCountriesByCapital` use case.
 
