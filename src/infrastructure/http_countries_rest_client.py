@@ -4,8 +4,10 @@ from retry import retry
 
 
 class HttpCountriesRestClient:
+    API_URL = "https://restcountries.com/v3.1/all"
+
     def find_countries_by_flag(self, max: int = 3) -> dict:
-        response = requests.get("https://restcountries.com/v3.1/all?fields=name,flags")
+        response = requests.get(f"{self.API_URL}?fields=name,flags")
         json_response = response.json()
         length = len(json_response)
         random_idx = np.random.randint(0, length, max)
@@ -19,9 +21,7 @@ class HttpCountriesRestClient:
 
     @retry(tries=3)
     def find_countries_by_capital(self, max: int = 3) -> dict:
-        response = requests.get(
-            "https://restcountries.com/v3.1/all?fields=name,capital"
-        )
+        response = requests.get(f"{self.API_URL}?fields=name,capital")
         json_response = response.json()
         length = len(json_response)
         random_idx = np.random.randint(0, length, max)
