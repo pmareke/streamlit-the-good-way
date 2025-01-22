@@ -39,9 +39,20 @@ check-format:  ## Check format python code
 format:  ## Format python code
 	poetry run ruff format
 
+.PHONY: test-unit
+test-unit: ## Run unit the tests
+	 PYTHONPATH=. poetry run pytest -n auto tests/unit -ra
+
+.PHONY: test-integration
+test-integration: ## Run integration the tests
+	 PYTHONPATH=. poetry run pytest -n auto tests/integration -ra
+
+.PHONY: test-acceptance
+test-acceptance: ## Run acceptance the tests
+	 PYTHONPATH=. poetry run pytest -n auto tests/acceptance -ra
+
 .PHONY: test
-test: ## Run all the tests
-	 PYTHONPATH=. poetry run pytest -n auto tests -ra
+test: test-unit test-integration test-acceptance ## Run all the tests
 
 .PHONY: watch
 watch: ## Run all the tests in watch mode
