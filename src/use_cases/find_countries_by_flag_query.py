@@ -20,5 +20,5 @@ class FindCountriesByFlagQueryHandler:
         flag = np.random.choice(list(countries.values()))
         booleans = {}
         for name in countries.keys():
-            booleans[name] = True if name == flag else False
+            booleans[name] = True if countries[name] == flag else False
         return FindCountriesByFlagQueryResponse(flag, booleans)

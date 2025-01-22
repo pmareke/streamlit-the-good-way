@@ -20,5 +20,5 @@ class FindCountriesByCapitalQueryHandler:
         capital = np.random.choice(list(countries.values()))
         booleans = {}
         for name in countries.keys():
-            booleans[name] = True if name == capital else False
+            booleans[name] = True if countries[name] == capital else False
         return FindCountriesByCapitalQueryResponse(capital, booleans)

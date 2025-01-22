@@ -15,3 +15,4 @@ class PlayAgainButton(Component):
 
     def _play_again_callback(self) -> None:
         st.session_state.clear()
+        st.rerun()
