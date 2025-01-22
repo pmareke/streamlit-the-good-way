@@ -11,8 +11,10 @@ class TestApp:
         header = "Fun with flags and capitals!"
         expect(at.header[0].value).to(equal(header))
 
-        subheader = "Which country does this flag belong to?"
-        expect(at.subheader[0].value).to(equal(subheader))
+        flags_subheader = "Which country does this flag belong to?"
+        expect(at.subheader[0].value).to(equal(flags_subheader))
+        capitals_subheader = "Which country does this capital belong to?"
+        expect(at.subheader[1].value).to(equal(capitals_subheader))
 
         expect(at.button).to(have_length(8))  # 4 in each tab
 
