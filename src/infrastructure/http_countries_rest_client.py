@@ -2,8 +2,10 @@ import numpy as np
 import requests
 from retry import retry
 
+from src.domain.countries_rest_client import CountriesRestClient
 
-class HttpCountriesRestClient:
+
+class HttpCountriesRestClient(CountriesRestClient):
     API_URL = "https://restcountries.com/v3.1/all"
 
     def find_countries_by_flag(self, max: int = 3) -> dict:

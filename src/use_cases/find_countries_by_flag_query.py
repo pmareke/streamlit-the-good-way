@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 import numpy as np
 
-from src.infrastructure.http_countries_rest_client import HttpCountriesRestClient
+from src.domain.countries_rest_client import CountriesRestClient
 
 
 @dataclass
@@ -12,7 +12,7 @@ class FindCountriesByFlagQueryResponse:
 
 
 class FindCountriesByFlagQueryHandler:
-    def __init__(self, countries_client: HttpCountriesRestClient):
+    def __init__(self, countries_client: CountriesRestClient):
         self.countries_client = countries_client
 
     def execute(self) -> FindCountriesByFlagQueryResponse:
