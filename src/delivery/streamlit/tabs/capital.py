@@ -6,7 +6,7 @@ from src.delivery.streamlit.components.solve_button import SolveButton
 from src.delivery.streamlit.components.sub_header import SubHeader
 from src.delivery.streamlit.components.title import Title
 from src.domain.component import Component
-from src.use_cases.find_countries_by_capital_query import (
+from src.use_cases.find_countries_by_capital_query_handler import (
     FindCountriesByCapitalQueryHandler,
 )
 

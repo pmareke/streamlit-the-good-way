@@ -1,9 +1,11 @@
 from src.delivery.streamlit.app import App
 from src.infrastructure.http_countries_rest_client import HttpCountriesRestClientFactory
-from src.use_cases.find_countries_by_capital_query import (
+from src.use_cases.find_countries_by_capital_query_handler import (
     FindCountriesByCapitalQueryHandler,
 )
-from src.use_cases.find_countries_by_flag_query import FindCountriesByFlagQueryHandler
+from src.use_cases.find_countries_by_flag_query_handler import (
+    FindCountriesByFlagQueryHandler,
+)
 
 countries_client = HttpCountriesRestClientFactory.make()
 flag_handler = FindCountriesByFlagQueryHandler(countries_client)

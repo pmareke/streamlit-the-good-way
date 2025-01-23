@@ -2,7 +2,9 @@ from doublex import Mimic, Stub
 from expects import equal, expect
 
 from src.infrastructure.http_countries_rest_client import HttpCountriesRestClient
-from src.use_cases.find_countries_by_flag_query import FindCountriesByFlagQueryHandler
+from src.use_cases.find_countries_by_flag_query_handler import (
+    FindCountriesByFlagQueryHandler,
+)
 
 
 class TestFindFlagByCapitalQueryHandler:

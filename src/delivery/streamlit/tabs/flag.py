@@ -6,7 +6,9 @@ from src.delivery.streamlit.components.play_again_button import PlayAgainButton
 from src.delivery.streamlit.components.solve_button import SolveButton
 from src.delivery.streamlit.components.sub_header import SubHeader
 from src.domain.component import Component
-from src.use_cases.find_countries_by_flag_query import FindCountriesByFlagQueryHandler
+from src.use_cases.find_countries_by_flag_query_handler import (
+    FindCountriesByFlagQueryHandler,
+)
 
 
 class FlagTab(Component):
