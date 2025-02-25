@@ -8,6 +8,7 @@ from src.domain.countries_rest_client import CountriesRestClient
 class HttpCountriesRestClient(CountriesRestClient):
     API_URL = "https://restcountries.com/v3.1/all"
 
+    @retry(tries=3)
     def find_countries_by_flag(self, max: int = 3) -> dict:
         response = requests.get(f"{self.API_URL}?fields=name,flags")
         json_response = response.json()
